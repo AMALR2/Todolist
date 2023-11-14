@@ -30,7 +30,7 @@ const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId}) => {
             <div className="row justify-content-between">
                 <Button buttonValue={"All"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(2)} />
                 <Button buttonValue={"Done"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(0)} />
-                <Button buttonValue={"Todo"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(2)} />
+                <Button buttonValue={"Todo"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(1)} />
             </div>
             <ul className="list-group">
                 {list.map((item: TodoItem) => (
