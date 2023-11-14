@@ -8,17 +8,19 @@ interface TodoItem {
     status: number;
 }
 interface TodoListItemProps {
-    item: TodoItem;
+    item: TodoItem
     setTitle: React.Dispatch<React.SetStateAction<string>>
     setEdit:React.Dispatch<React.SetStateAction<boolean>>
     setEditId:React.Dispatch<React.SetStateAction<number>>
+    fetchData:() => void
 }
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdit,setEditId }) => {
+export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdit,setEditId,fetchData }) => {
     const checkboxHandler = (id: number) => {
         axios.post(`http://localhost:3000/api/check/${id}`)
             .then(res => console.log(res.data))
             .catch(error => console.error(error))
+        fetchData()
     }
     const updateHandler=()=>{
         setEdit(true)
@@ -41,6 +43,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdi
                     .then(res => console.log(res.data))
                     .catch(error => console.error(error))
                 Swal.fire("Deleted!", "Your todo has been deleted.", "success")
+                fetchData()
             }
         })
     }

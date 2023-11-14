@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from "react"
-import axios from 'axios'
+import React from "react"
 import Button from "../../../../forms/button/index"
 import { TodoListItem } from "./TodoListItem"
-interface TodoListProps {
-    setTitle: React.Dispatch<React.SetStateAction<string>>
-    setEdit:React.Dispatch<React.SetStateAction<boolean>>
-    setEditId:React.Dispatch<React.SetStateAction<number>>
-  }
 interface TodoItem {
     id: number
     title: string
     status: number
 }
+interface TodoListProps {
+    setTitle: React.Dispatch<React.SetStateAction<string>>
+    setEdit:React.Dispatch<React.SetStateAction<boolean>>
+    setEditId:React.Dispatch<React.SetStateAction<number>>
+    fetchData:()=>void
+    list:TodoItem[]
+    setNotStatus:React.Dispatch<React.SetStateAction<number>>
+  }
 
-const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId}) => {
-    const [list, setList] = useState<TodoItem[]>([])
-    const [notStatus,setNotStatus]=useState<number>(2)
-    useEffect(() => {
-        fetchData()
-    }, [notStatus])
-    const fetchData=()=>{
-        axios.get(`http://localhost:3000/api/${notStatus}`)
-            .then((res) => setList(res.data))
-            .catch((err) => console.log(err))
-    }
+const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId,fetchData, list,setNotStatus}) => {
+    
     return (
         <div className="col-10 py-3">
             <h2 className="text-center">Todo List</h2>
@@ -34,7 +27,7 @@ const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId}) => {
             </div>
             <ul className="list-group">
                 {list.map((item: TodoItem) => (
-                    <TodoListItem item={item} setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} key={item?.id}/>
+                    <TodoListItem item={item} setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} fetchData={fetchData} key={item?.id}/>
                 ))}
             </ul>
         </div>

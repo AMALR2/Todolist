@@ -3,12 +3,13 @@ import Input from "../../../../forms/input/index";
 import { TodoInputIcon } from "./TodoInputIcon";
 import Button from "../../../../forms/button/index";
 interface TodoInputProps {
-  title: string;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
-  submitHandler: (title: string) => void;
+  title: string
+  setTitle: React.Dispatch<React.SetStateAction<string>>
+  edit:boolean
+  submitHandler: (title: string) => void
 }
 
-const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, submitHandler }) => {
+const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, edit, submitHandler }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     submitHandler(title)
@@ -23,7 +24,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, submitHandler })
           <Input placeHolder="New Todo" value={title} onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <Button buttonValue="Add new task" additionalClass="bg-aqua w-100"/>
+        <Button buttonValue={edit?"Update":"Add new task"} additionalClass="bg-aqua w-100"/>
       </form>
     </div>
   )
