@@ -2,12 +2,7 @@ import React from "react";
 import Input from "../../../../forms/input/index";
 import { TodoInputIcon } from "./TodoInputIcon";
 import Button from "../../../../forms/button/index";
-interface TodoInputProps {
-  title: string
-  setTitle: React.Dispatch<React.SetStateAction<string>>
-  edit:boolean
-  submitHandler: (title: string) => void
-}
+import { TodoInputProps } from "../../../../../types";
 
 const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, edit, submitHandler }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

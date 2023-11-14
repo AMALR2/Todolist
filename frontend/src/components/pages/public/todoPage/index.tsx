@@ -3,11 +3,7 @@ import axios from "axios"
 import Swal from "sweetalert2"
 import TodoInput from "./todoInput/index"
 import TodoList from "./todoList"
-interface TodoItem {
-  id: number
-  title: string
-  status: number
-}
+import { TodoItem } from "../../../../types"
 
 const TodoPage: React.FC = () => {
   const [title, setTitle] = useState<string>("")

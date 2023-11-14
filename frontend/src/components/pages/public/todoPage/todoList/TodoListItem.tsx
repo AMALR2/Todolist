@@ -2,18 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Swal from "sweetalert2";
 import Button from "../../../../forms/button";
-interface TodoItem {
-    id: number;
-    title: string;
-    status: number;
-}
-interface TodoListItemProps {
-    item: TodoItem
-    setTitle: React.Dispatch<React.SetStateAction<string>>
-    setEdit:React.Dispatch<React.SetStateAction<boolean>>
-    setEditId:React.Dispatch<React.SetStateAction<number>>
-    fetchData:() => void
-}
+import { TodoListItemProps } from "../../../../../types";
 
 export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdit,setEditId,fetchData }) => {
     const checkboxHandler = (id: number) => {

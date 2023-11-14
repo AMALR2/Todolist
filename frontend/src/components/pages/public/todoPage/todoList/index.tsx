@@ -1,19 +1,8 @@
 import React from "react"
 import Button from "../../../../forms/button/index"
 import { TodoListItem } from "./TodoListItem"
-interface TodoItem {
-    id: number
-    title: string
-    status: number
-}
-interface TodoListProps {
-    setTitle: React.Dispatch<React.SetStateAction<string>>
-    setEdit:React.Dispatch<React.SetStateAction<boolean>>
-    setEditId:React.Dispatch<React.SetStateAction<number>>
-    fetchData:()=>void
-    list:TodoItem[]
-    setNotStatus:React.Dispatch<React.SetStateAction<number>>
-  }
+import { TodoItem } from "../../../../../types"
+import { TodoListProps } from "../../../../../types"
 
 const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId,fetchData, list,setNotStatus}) => {
     
