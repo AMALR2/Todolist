@@ -57,5 +57,5 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdi
                 <Button additionalClass="me-2" icon="fa-solid fa-trash" onClick={() => deleteHandler()} />
             </div>
         </li>
-    );
-};
+    )
+}

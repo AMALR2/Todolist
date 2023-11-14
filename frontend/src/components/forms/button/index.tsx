@@ -8,7 +8,7 @@ interface ButtonProps{
 const Button:React.FC <ButtonProps> =({buttonValue,additionalClass,icon,onClick})=>{
     return(
         <>
-            <button className={`btn ${additionalClass}`} onClick={onClick}><i className={icon}></i>{buttonValue}</button>
+            <button className={`btn border-0 ${additionalClass}`} onClick={onClick}><i className={icon}></i>{buttonValue}</button>
         </>
     )
 }

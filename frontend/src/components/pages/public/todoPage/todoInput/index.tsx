@@ -19,7 +19,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, edit, submitHand
           <Input placeHolder="New Todo" value={title} onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <Button buttonValue={edit?"Update":"Add new task"} additionalClass="bg-aqua w-100"/>
+        <Button buttonValue={edit?"Update":"Add new task"} additionalClass="btn-danger bg-aqua w-100"/>
       </form>
     </div>
   )

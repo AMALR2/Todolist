@@ -60,7 +60,7 @@ const TodoPage: React.FC = () => {
   return (
     <div className="row justify-content-center container-fluid">
       <TodoInput title={title} setTitle={setTitle} edit={edit} submitHandler={submitHandler} />
-      <TodoList setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} fetchData={fetchData} list={list} setNotStatus={setNotStatus}/>
+      <TodoList setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} fetchData={fetchData} list={list} notStatus={notStatus} setNotStatus={setNotStatus}/>
     </div>
   )
 }

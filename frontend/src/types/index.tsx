@@ -15,6 +15,7 @@ export interface TodoListProps {
     setEditId:React.Dispatch<React.SetStateAction<number>>
     fetchData:()=>void
     list:TodoItem[]
+    notStatus:number
     setNotStatus:React.Dispatch<React.SetStateAction<number>>
 }
 export interface TodoListItemProps {
