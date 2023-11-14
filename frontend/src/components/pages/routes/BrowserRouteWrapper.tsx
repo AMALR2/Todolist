@@ -1,21 +1,17 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { BrowserRouter, Routes } from 'react-router-dom';
 import Layout from "../../layout/index"
+import { BrowserRouteWrapperProps } from "../../../types";
 
-interface BrowserRouteWrapperProps {
-    children: ReactNode;
-}
 
 export const BrowserRouteWrapper: React.FC<BrowserRouteWrapperProps> = ({ children }) => {
     return (
-        <>
-            <BrowserRouter>
-                <Layout>
-                    <Routes>
-                        {children}
-                    </Routes>
-                </Layout>
-            </BrowserRouter>
-        </>
+        <BrowserRouter>
+            <Layout>
+                <Routes>
+                    {children}
+                </Routes>
+            </Layout>
+        </BrowserRouter>
     );
 };

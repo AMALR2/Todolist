@@ -1,9 +1,8 @@
-import React,{ReactNode} from "react"
-interface BrowserRouteWrapperProps {
-    children: ReactNode;
-}
-const Layout:React.FC<BrowserRouteWrapperProps>=({children})=>{
-    return(
+import React from "react"
+import { BrowserRouteWrapperProps } from "../../types"
+
+const Layout: React.FC<BrowserRouteWrapperProps> = ({ children }) => {
+    return (
         <main>{children}</main>
     )
 }

@@ -4,7 +4,7 @@ import { TodoListItem } from "./TodoListItem"
 import { TodoItem } from "../../../../../types"
 import { TodoListProps } from "../../../../../types"
 
-const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId,fetchData, list, notStatus,setNotStatus}) => {
+const TodoList: React.FC<TodoListProps> = ({setTitle,setEditId,fetchData, list, notStatus,setNotStatus}) => {
     
     return (
         <div className="col-10 py-3">
@@ -15,8 +15,8 @@ const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId,fetchData
                 <Button buttonValue={"Todo"} additionalClass={"btn-danger bg-aqua w-25 " + (notStatus === 1 ? "bg-danger" : "bg-aqua")} onClick={() => setNotStatus(1)} />
             </div>
             <ul className="list-group">
-                {list.map((item: TodoItem) => (
-                    <TodoListItem item={item} setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} fetchData={fetchData} key={item?.id}/>
+                {list?.map((item: TodoItem) => (
+                    <TodoListItem item={item} setTitle={setTitle} setEditId={setEditId} fetchData={fetchData} key={item?.id}/>
                 ))}
             </ul>
         </div>

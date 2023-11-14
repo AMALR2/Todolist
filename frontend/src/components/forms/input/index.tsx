@@ -1,9 +1,6 @@
 import React from "react";
-interface inputProps{
-    placeHolder?:string,
-    value?:string,
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
+import { inputProps } from "../../../types";
+
 
 const Input:React.FC <inputProps> =({placeHolder,value,onChange})=>{
     return(

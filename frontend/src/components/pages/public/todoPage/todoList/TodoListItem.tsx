@@ -4,18 +4,20 @@ import Swal from "sweetalert2";
 import Button from "../../../../forms/button";
 import { TodoListItemProps } from "../../../../../types";
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdit,setEditId,fetchData }) => {
+export const TodoListItem: React.FC<TodoListItemProps> = ({ item, setTitle, setEditId, fetchData }) => {
+   
     const checkboxHandler = (id: number) => {
         axios.post(`http://localhost:3000/api/check/${id}`)
             .then(res => console.log(res.data))
             .catch(error => console.error(error))
         fetchData()
     }
-    const updateHandler=()=>{
-        setEdit(true)
+   
+    const updateHandler = () => {
         setEditId(item.id)
         setTitle(item.title)
     }
+   
     const deleteHandler = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -27,7 +29,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdi
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                const id=item.id
+                const id = item.id
                 axios.delete(`http://localhost:3000/api/delete/${id}`)
                     .then(res => console.log(res.data))
                     .catch(error => console.error(error))
@@ -53,7 +55,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ item,setTitle,setEdi
                         onChange={() => checkboxHandler(item?.id)}
                     />
                 </div>
-                <Button additionalClass="me-2" icon="fa-solid fa-pen" onClick={() => updateHandler()}/>
+                <Button additionalClass="me-2" icon="fa-solid fa-pen" onClick={() => updateHandler()} />
                 <Button additionalClass="me-2" icon="fa-solid fa-trash" onClick={() => deleteHandler()} />
             </div>
         </li>

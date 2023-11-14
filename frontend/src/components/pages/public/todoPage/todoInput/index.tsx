@@ -4,7 +4,7 @@ import { TodoInputIcon } from "./TodoInputIcon";
 import Button from "../../../../forms/button/index";
 import { TodoInputProps } from "../../../../../types";
 
-const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, edit, submitHandler }) => {
+const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, editId, submitHandler }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     submitHandler(title)
@@ -19,7 +19,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ title, setTitle, edit, submitHand
           <Input placeHolder="New Todo" value={title} onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <Button buttonValue={edit?"Update":"Add new task"} additionalClass="btn-danger bg-aqua w-100"/>
+        <Button buttonValue={editId>0?"Update":"Add new task"} additionalClass="btn-danger bg-aqua w-100"/>
       </form>
     </div>
   )
