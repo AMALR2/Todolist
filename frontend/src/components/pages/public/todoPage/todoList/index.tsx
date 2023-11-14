@@ -14,36 +14,26 @@ interface TodoItem {
 }
 
 const TodoList: React.FC<TodoListProps> = ({setTitle,setEdit,setEditId}) => {
-    const [allList, setAllList] = useState<TodoItem[]>([])
-    const [doneList, setDoneList] = useState<TodoItem[]>([])
-    const [todoList, setTodoList] = useState<TodoItem[]>([])
-    const [currentList, setCurrentList] = useState<TodoItem[]>([])
+    const [list, setList] = useState<TodoItem[]>([])
+    const [notStatus,setNotStatus]=useState<number>(2)
     useEffect(() => {
         fetchData()
-
-    }, [])
-    const filterHandler = (list: TodoItem[]) => {
-        setCurrentList(list)
-    }
+    }, [notStatus])
     const fetchData=()=>{
-        axios.get('http://localhost:3000/api/')
-            .then((res) => {
-                setAllList(res.data)
-                setDoneList(res.data?.filter((item: TodoItem) => item.status === 1))
-                setTodoList(res.data?.filter((item: TodoItem) => item.status === 0))
-            })
+        axios.get(`http://localhost:3000/api/${notStatus}`)
+            .then((res) => setList(res.data))
             .catch((err) => console.log(err))
     }
     return (
         <div className="col-10 py-3">
             <h2 className="text-center">Todo List</h2>
             <div className="row justify-content-between">
-                <Button buttonValue={"All"} additionalClass={"bg-aqua w-25"} onClick={() => filterHandler(allList)} />
-                <Button buttonValue={"Done"} additionalClass={"bg-aqua w-25"} onClick={() => filterHandler(doneList)} />
-                <Button buttonValue={"Todo"} additionalClass={"bg-aqua w-25"} onClick={() => filterHandler(todoList)} />
+                <Button buttonValue={"All"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(2)} />
+                <Button buttonValue={"Done"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(0)} />
+                <Button buttonValue={"Todo"} additionalClass={"bg-aqua w-25"} onClick={() => setNotStatus(2)} />
             </div>
             <ul className="list-group">
-                {currentList.map((item: TodoItem) => (
+                {list.map((item: TodoItem) => (
                     <TodoListItem item={item} setTitle={setTitle} setEdit={setEdit} setEditId={setEditId} key={item?.id}/>
                 ))}
             </ul>

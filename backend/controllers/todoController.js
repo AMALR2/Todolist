@@ -1,7 +1,7 @@
 const todoModel = require('../models/todoModel')
 const todoController = {
     getTodo: (req, res) => {
-        todoModel.getTodo((err, data) => {
+        todoModel.getTodo(req, res,(err, data) => {
             err ? res.json(err) : res.json(data)
         })
     },

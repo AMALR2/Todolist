@@ -1,8 +1,9 @@
 const db = require('../config/config')
 const todoModel = {
-    getTodo: (callback) => {
-        const sql = "SELECT * FROM `todo`"
-        db.query(sql, callback)
+    getTodo: (req,res,callback) => {
+        const sql = "SELECT * FROM `todo` WHERE `status`!=?"
+        const {notStatus}= req.params
+        db.query(sql, [notStatus], callback)
     },
     postTodo: (req, res, callback) => {
         const sql = "INSERT INTO `todo`(`title`,`status`) VALUES (?)"
